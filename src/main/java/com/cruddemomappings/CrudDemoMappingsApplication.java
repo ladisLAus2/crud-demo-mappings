@@ -1,5 +1,6 @@
 package com.cruddemomappings;
 
+import com.cruddemomappings.entity.Course;
 import com.cruddemomappings.entity.Instructor;
 import com.cruddemomappings.entity.InstructorDetail;
 import com.cruddemomappings.entity.dao.AppDAO;
@@ -21,8 +22,24 @@ public class CrudDemoMappingsApplication {
 			//findInstructor(appDAO);
 			//deleteInstructor(appDAO);
 			//findInstructorDetail(appDAO);
-			deleteInstructorDetail(appDAO);
+			//deleteInstructorDetail(appDAO);
+			createInstructorWithCourses(appDAO);
 		};
+	}
+
+	private void createInstructorWithCourses(AppDAO appDAO) {
+		Instructor instructor = new Instructor("vlad", "sema", "email.com");
+
+		InstructorDetail instructorDetail = new InstructorDetail("my_channel","anime");
+
+		Course course = new Course("anime course");
+		Course course2 = new Course("anime 2");
+		Course course3 = new Course("anime course 3");
+		instructor.setInstructorDetail(instructorDetail);
+		instructor.add(course);
+		instructor.add(course2);
+		instructor.add(course3);
+		appDAO.save(instructor);
 	}
 
 	private void deleteInstructorDetail(AppDAO appDAO) {
