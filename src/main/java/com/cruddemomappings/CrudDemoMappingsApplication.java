@@ -19,8 +19,19 @@ public class CrudDemoMappingsApplication {
 		return runner -> {
 			//createInstructor(appDAO);
 			//findInstructor(appDAO);
-			deleteInstructor(appDAO);
+			//deleteInstructor(appDAO);
+			//findInstructorDetail(appDAO);
+			deleteInstructorDetail(appDAO);
 		};
+	}
+
+	private void deleteInstructorDetail(AppDAO appDAO) {
+		appDAO.deleteInstructorDetailById(3);
+	}
+
+	private void findInstructorDetail(AppDAO appDAO) {
+		System.out.println(appDAO.findInstructorDetailById(2));
+		System.out.println(appDAO.findInstructorDetailById(2).getInstructor());
 	}
 
 	private void deleteInstructor(AppDAO appDAO) {
